@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var checkAmount = 0.0
-    @State private var numberOfPeople = 2
+    @State private var numberOfPeople = 0
     @State private var tipPercentage = 5
     @FocusState private var amountIsFocused: Bool
     
@@ -36,17 +36,17 @@ struct ContentView: View {
             Form {
                 Section("Bill Amount") {
                     TextField("Amount", value: $checkAmount, format: currencyID)
+                        .font(.title3)
                         .keyboardType(.decimalPad)
                         .focused($amountIsFocused)
                     
                     Picker("Number of people", selection: $numberOfPeople) {
-                        ForEach(2..<100) {
+                        ForEach(2..<21) {
                             Text("\($0) people")
                         }
                     }
                 }
-                .backgroundStyle(.ultraThinMaterial)
-                
+                .listRowBackground(Color.clear)
                 
                 Section("Tips to leave:") {
                     Picker("Tip percentage", selection: $tipPercentage) {
@@ -55,20 +55,32 @@ struct ContentView: View {
                         }
                     }
                     .pickerStyle(.segmented)
+                    .colorMultiply(.orange)
                 }
+                .listRowBackground(Color.clear)
                 
                 Section {
-                    Text(totalPerPerson, format: currencyID)
+                    HStack {
+                        Spacer()
+                        Text(totalPerPerson, format: currencyID)
+                            .font(.title)
+                            .bold()
+                    }
                 } header: {
                     Text("Amount per person:")
                 }
+                .listRowBackground(Color.clear)
                 
                 Section {
                     Text(totalAmount, format: currencyID)
+                        .font(.title3)
                 } header: {
                     Text("Total including tips")
                 }
+                .listRowBackground(Color.clear)
             }
+            .scrollContentBackground(.hidden) // will hide default background for scroll content
+            .background(Gradient(colors: [.orange.opacity(0.5), .yellow.opacity(0.5), .green.opacity(0.8)]))
             .navigationTitle("Split the bill")
             .toolbar {
                 if amountIsFocused {
