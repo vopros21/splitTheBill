@@ -103,6 +103,7 @@ struct ContentView: View {
                     }
                 }
             }
+            .toolbarBackground(.orange.opacity(0.5))
         }
     }
     
