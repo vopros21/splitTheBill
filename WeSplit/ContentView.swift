@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.modelContext) var modelContext
+    
+    @State private var sortOrder = SortDescriptor(\HistoricalTransaction.date, order: .reverse)
+    
     @State private var checkAmount = 0.0
     @State private var numberOfPeople = 0
     @State private var tipPercentage = 5
@@ -78,18 +82,33 @@ struct ContentView: View {
                     Text("Total including tips")
                 }
                 .listRowBackground(Color.clear)
+                TransactionHistoryListingView(sort: sortOrder)
             }
             .scrollContentBackground(.hidden) // will hide default background for scroll content
             .background(Gradient(colors: [.orange.opacity(0.5), .yellow.opacity(0.5), .green.opacity(0.8)]))
             .navigationTitle("Split the bill")
             .toolbar {
+                Menu("Sort", systemImage: "arrow.up.arrow.down") {
+                    Picker("Sort", selection: $sortOrder) {
+                        Label("Date", systemImage: "calendar").tag(SortDescriptor(\HistoricalTransaction.date, order: .reverse))
+                        Label("Amount", systemImage: "arrowtriangle.up.fill").tag(SortDescriptor(\HistoricalTransaction.checkAmount))
+                        Label("Amount", systemImage: "arrowtriangle.down.fill").tag(SortDescriptor(\HistoricalTransaction.checkAmount, order: .reverse))
+                    }
+                    .pickerStyle(.inline)
+                }
                 if amountIsFocused {
                     Button("Done") {
+                        saveTransaction()
                         amountIsFocused.toggle()
                     }
                 }
             }
         }
+    }
+    
+    func saveTransaction() {
+        let transaction = HistoricalTransaction(people: numberOfPeople + 2, checkAmount: checkAmount, tipsPercentage: tipPercentage)
+        modelContext.insert(transaction)
     }
 }
 
