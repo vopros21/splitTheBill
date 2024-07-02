@@ -108,7 +108,8 @@ struct ContentView: View {
     }
     
     func saveTransaction() {
-        let transaction = HistoricalTransaction(people: numberOfPeople + 2, checkAmount: checkAmount, tipsPercentage: tipPercentage)
+        // TODO: add precondition for an empty transaction from https://www.hackingwithswift.com/plus/inside-swift/the-power-of-preconditions ts: 11:20
+        let transaction = HistoricalTransaction(contacts: [], people: numberOfPeople + 2, checkAmount: checkAmount, tipsPercentage: tipPercentage)
         modelContext.insert(transaction)
     }
 }
