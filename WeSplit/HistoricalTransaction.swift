@@ -15,9 +15,11 @@ class HistoricalTransaction {
     var checkAmount: Double
     var tipsPercentage: Int
     var comment: String
+    @Relationship(inverse: \Person.transactions) var contacts: [Person]
     
-    init(date: Date = .now, people: Int, checkAmount: Double, tipsPercentage: Int, comment: String = "") {
+    init(date: Date = .now, contacts: [Person], people: Int, checkAmount: Double, tipsPercentage: Int, comment: String = "") {
         self.date = date
+        self.contacts = contacts
         self.people = people
         self.checkAmount = checkAmount
         self.tipsPercentage = tipsPercentage

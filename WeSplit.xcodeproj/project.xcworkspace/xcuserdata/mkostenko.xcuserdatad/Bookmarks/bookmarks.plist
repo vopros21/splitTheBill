@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>top-level-items</key>
+	<array>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>61</string>
+					<key>EndingLineNumber</key>
+					<string>110</string>
+					<key>StartingColumnNumber</key>
+					<string>61</string>
+					<key>StartingLineNumber</key>
+					<string>110</string>
+					<key>Timestamp</key>
+					<string>741463754.9096839</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>WeSplit/ContentView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string></string>
+				<key>leading</key>
+				<string>    
+    func saveTransaction() {
+        // TODO: add precondition for an empty transaction fr</string>
+				<key>trailing</key>
+				<string>om https://www.hackingwithswift.com/plus/inside-swift/the-power-of-preconditions ts: 11:20
+        let transaction = HistoricalTransaction(contacts: [], people: numberOfPeople + 2, checkAmount: checkAmount, tipsPercentage: tipPercentage)
+        modelContext.insert(transaction)
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+	</array>
+</dict>
+</plist>

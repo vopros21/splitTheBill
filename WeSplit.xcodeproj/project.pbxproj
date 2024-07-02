@@ -13,6 +13,7 @@
 		58142DDC2A92B44D00714201 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58142DDB2A92B44D00714201 /* Preview Assets.xcassets */; };
 		5898896A2C28416300F73DAF /* HistoricalTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589889692C28416300F73DAF /* HistoricalTransaction.swift */; };
 		5898896C2C28452A00F73DAF /* TransactionHistoryListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5898896B2C28452A00F73DAF /* TransactionHistoryListingView.swift */; };
+		5898896E2C34567600F73DAF /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5898896D2C34567600F73DAF /* Person.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		58142DDB2A92B44D00714201 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		589889692C28416300F73DAF /* HistoricalTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalTransaction.swift; sourceTree = "<group>"; };
 		5898896B2C28452A00F73DAF /* TransactionHistoryListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryListingView.swift; sourceTree = "<group>"; };
+		5898896D2C34567600F73DAF /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				58142DD62A92B44700714201 /* ContentView.swift */,
 				5898896B2C28452A00F73DAF /* TransactionHistoryListingView.swift */,
 				589889692C28416300F73DAF /* HistoricalTransaction.swift */,
+				5898896D2C34567600F73DAF /* Person.swift */,
 				58142DD82A92B44D00714201 /* Assets.xcassets */,
 				58142DDA2A92B44D00714201 /* Preview Content */,
 			);
@@ -143,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5898896E2C34567600F73DAF /* Person.swift in Sources */,
 				58142DD72A92B44700714201 /* ContentView.swift in Sources */,
 				5898896A2C28416300F73DAF /* HistoricalTransaction.swift in Sources */,
 				58142DD52A92B44700714201 /* WeSplitApp.swift in Sources */,
