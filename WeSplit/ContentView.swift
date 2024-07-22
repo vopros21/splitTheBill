@@ -43,6 +43,25 @@ struct ContentView: View {
                         .font(.title3)
                         .keyboardType(.decimalPad)
                         .focused($amountIsFocused)
+                        .toolbar {
+                            ToolbarItemGroup(placement: .keyboard) {
+                                Button {
+                                    amountIsFocused.toggle()
+                                } label: {
+                                    Image(systemName: "keyboard.chevron.compact.down")
+                                    
+                                }
+                                Spacer()
+                                Button {
+                                    saveTransaction()
+                                    amountIsFocused.toggle()
+                                    checkAmount = 0
+                                } label: {
+                                    Image(systemName: "square.and.arrow.down")
+                                }
+                                .disabled(checkAmount == 0)
+                            }
+                        }
                     
                     Picker("Number of people", selection: $numberOfPeople) {
                         ForEach(2..<21) {
@@ -99,10 +118,11 @@ struct ContentView: View {
                     .pickerStyle(.inline)
                     .foregroundStyle(.black)
                 }
-                if amountIsFocused {
+                if checkAmount != 0 {
                     Button("Done") {
                         saveTransaction()
-                        amountIsFocused.toggle()
+                        amountIsFocused = false
+                        checkAmount = 0
                     }
                 }
             }
