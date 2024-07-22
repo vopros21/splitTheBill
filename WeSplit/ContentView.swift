@@ -59,7 +59,7 @@ struct ContentView: View {
                         }
                     }
                     .pickerStyle(.segmented)
-                    .colorMultiply(.orange)
+                    .colorMultiply(Color(.grayBluewishControl))
                 }
                 .listRowBackground(Color.clear)
                 
@@ -85,7 +85,9 @@ struct ContentView: View {
                 TransactionHistoryListingView(sort: sortOrder)
             }
             .scrollContentBackground(.hidden) // will hide default background for scroll content
-            .background(Gradient(colors: [.orange.opacity(0.5), .yellow.opacity(0.5), .green.opacity(0.8)]))
+//            .background(Gradient(colors: [.orange.opacity(0.5), .yellow.opacity(0.5), .green.opacity(0.8)]))
+            .background(Gradient(colors: [Color(.grayBluewishBg).opacity(0.5),
+                                          .clear.opacity(0.5)]))
             .navigationTitle("Split the bill")
             .toolbar {
                 Menu("Sort", systemImage: "arrow.up.arrow.down") {
@@ -95,6 +97,7 @@ struct ContentView: View {
                         Label("Amount", systemImage: "arrowtriangle.down.fill").tag(SortDescriptor(\HistoricalTransaction.checkAmount, order: .reverse))
                     }
                     .pickerStyle(.inline)
+                    .foregroundStyle(.black)
                 }
                 if amountIsFocused {
                     Button("Done") {
@@ -103,8 +106,9 @@ struct ContentView: View {
                     }
                 }
             }
-            .toolbarBackground(.orange.opacity(0.5))
+            .toolbarBackground(Color(.grayBluewishTb).opacity(0.5))
         }
+        .accentColor(.primary)
     }
     
     func saveTransaction() {
