@@ -17,7 +17,9 @@ struct TransactionHistoryListingView: View {
     var body: some View {
         List {
             ForEach(history) { transaction in
-                NavigationLink(value: transaction) {
+                NavigationLink {
+                    TransactionView(transaction: transaction)
+                } label: {
                     VStack(alignment: .leading) {
                         let amount = transaction.checkAmount * Double(1 + transaction.tipsPercentage / 100)
                         HStack {

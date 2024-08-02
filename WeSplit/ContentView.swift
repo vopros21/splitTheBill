@@ -49,7 +49,6 @@ struct ContentView: View {
                                     amountIsFocused.toggle()
                                 } label: {
                                     Image(systemName: "keyboard.chevron.compact.down")
-                                    
                                 }
                                 Spacer()
                                 Button {
