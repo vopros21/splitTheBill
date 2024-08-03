@@ -43,6 +43,9 @@ struct ContentView: View {
                         .font(.title3)
                         .keyboardType(.decimalPad)
                         .focused($amountIsFocused)
+                        .onAppear {
+                            UITextField.appearance().clearButtonMode = .whileEditing
+                        }
                         .toolbar {
                             ToolbarItemGroup(placement: .keyboard) {
                                 Button {
@@ -83,23 +86,25 @@ struct ContentView: View {
                 
                 Section {
                     HStack {
+                        Text("Amount per person:")
                         Spacer()
                         Text(totalPerPerson, format: currencyID)
                             .font(.title)
                             .bold()
                     }
+                    HStack {
+                        Text("Total with tips:")
+                        Spacer()
+                        Text(totalAmount, format: currencyID)
+                            .font(.title3)
+                            .bold()
+                    }
                 } header: {
-                    Text("Amount per person:")
+                    Text("To pay:")
                 }
                 .listRowBackground(Color.clear)
-                
-                Section {
-                    Text(totalAmount, format: currencyID)
-                        .font(.title3)
-                } header: {
-                    Text("Total including tips")
-                }
-                .listRowBackground(Color.clear)
+                .monospacedDigit()
+
                 TransactionHistoryListingView(sort: sortOrder)
             }
             .scrollContentBackground(.hidden) // will hide default background for scroll content
