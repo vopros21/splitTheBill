@@ -57,12 +57,8 @@ struct ContentView: View {
                                 .disabled(checkAmount == 0)
                             }
                         }
-                    
-                    Picker("Number of people", selection: $numberOfPeople) {
-                        ForEach(2..<21) {
-                            Text("\($0) people")
-                        }
-                    }
+                    Stepper("People: \(numberOfPeople + 2)", value: $numberOfPeople, in: 0...30)
+                        .font(.title3)
                 }
                 .listRowBackground(Color.clear)
                 
