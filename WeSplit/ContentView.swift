@@ -57,7 +57,7 @@ struct ContentView: View {
                                 .disabled(checkAmount == 0)
                             }
                         }
-                    Stepper("People: \(numberOfPeople + 2)", value: $numberOfPeople, in: 0...30)
+                    Stepper("People: \(numberOfPeople + 2)", value: $numberOfPeople, in: 0...28)
                         .font(.title3)
                 }
                 .listRowBackground(Color.clear)
