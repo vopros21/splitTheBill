@@ -12,6 +12,8 @@ struct ContentView: View {
     
     @AppStorage("welcomeScreenShown")
     private var welcomeScreenShown = false
+    @AppStorage("paidUser")
+    private var isPaidUser = false
     
     @State private var sortOrder = SortDescriptor(\HistoricalTransaction.date, order: .reverse)
     
@@ -98,7 +100,11 @@ struct ContentView: View {
                     .listRowBackground(Color.clear)
                     .monospacedDigit()
                     
-                    TransactionHistoryListingView(sort: sortOrder)
+                    if isPaidUser {
+                        TransactionHistoryListingView(sort: sortOrder)
+                    } else {
+                        BehindPaywallView()
+                    }
                 }
                 .scrollContentBackground(.hidden) // will hide default background for scroll content
                 //            .background(Gradient(colors: [.orange.opacity(0.5), .yellow.opacity(0.5), .green.opacity(0.8)]))
