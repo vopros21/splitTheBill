@@ -17,6 +17,8 @@ struct ContentView: View {
     
     @State private var sortOrder = SortDescriptor(\HistoricalTransaction.date, order: .reverse)
     
+    @State private var showingAlert = false
+    
     @State private var checkAmount = 0.0
     @State private var numberOfPeople = 0
     @State private var tipPercentage = 5
@@ -56,7 +58,6 @@ struct ContentView: View {
                                     Button {
                                         saveTransaction()
                                         amountIsFocused.toggle()
-                                        checkAmount = 0
                                     } label: {
                                         Image(systemName: "square.and.arrow.down")
                                     }
@@ -125,11 +126,19 @@ struct ContentView: View {
                         Button("Done") {
                             saveTransaction()
                             amountIsFocused = false
-                            checkAmount = 0
                         }
                     }
                 }
                 .toolbarBackground(Color(.grayBluewishTb).opacity(0.5))
+                .alert("\(totalPerPerson, format: currencyID)", isPresented: $showingAlert) {
+                    Button("OK", role: .cancel) { }
+                } message: {
+                    Text("""
+                            per each person
+                            Total amount: \(totalAmount, format: currencyID)
+                        """)
+                        .font(.title)
+                }
             }
             .tint(.primary)
         } else {
@@ -141,6 +150,11 @@ struct ContentView: View {
         // TODO: add precondition for an empty transaction from https://www.hackingwithswift.com/plus/inside-swift/the-power-of-preconditions ts: 11:20
         let transaction = HistoricalTransaction(contacts: [], people: numberOfPeople + 2, checkAmount: checkAmount, tipsPercentage: tipPercentage)
         modelContext.insert(transaction)
+        if !isPaidUser {
+            showingAlert = true
+        } else {
+            checkAmount = 0
+        }
     }
 }
 
