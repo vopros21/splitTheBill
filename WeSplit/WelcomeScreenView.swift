@@ -18,7 +18,7 @@ struct WelcomeScreenView: View {
                 .padding(.bottom)
             Group{
                 Text("1. Add tips")
-                Text("2. Pay for all at one")
+                Text("2. Pay for all at once")
                 Text("3. Get payment back later")
             }
             .padding(.bottom)

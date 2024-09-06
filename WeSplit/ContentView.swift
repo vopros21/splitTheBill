@@ -134,7 +134,7 @@ struct ContentView: View {
                     Button("OK", role: .cancel) { }
                 } message: {
                     Text("""
-                            per each person
+                            per person
                             Total amount: \(totalAmount, format: currencyID)
                         """)
                         .font(.title)
