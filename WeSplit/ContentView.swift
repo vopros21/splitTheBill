@@ -113,14 +113,16 @@ struct ContentView: View {
                                               .clear.opacity(0.5)]))
                 .navigationTitle("Split the bill")
                 .toolbar {
-                    Menu("Sort", systemImage: "arrow.up.arrow.down") {
-                        Picker("Sort", selection: $sortOrder) {
-                            Label("Date", systemImage: "calendar").tag(SortDescriptor(\HistoricalTransaction.date, order: .reverse))
-                            Label("Amount", systemImage: "arrowtriangle.up.fill").tag(SortDescriptor(\HistoricalTransaction.checkAmount))
-                            Label("Amount", systemImage: "arrowtriangle.down.fill").tag(SortDescriptor(\HistoricalTransaction.checkAmount, order: .reverse))
+                    if isPaidUser {
+                        Menu("Sort", systemImage: "arrow.up.arrow.down") {
+                            Picker("Sort", selection: $sortOrder) {
+                                Label("Date", systemImage: "calendar").tag(SortDescriptor(\HistoricalTransaction.date, order: .reverse))
+                                Label("Amount", systemImage: "arrowtriangle.up.fill").tag(SortDescriptor(\HistoricalTransaction.checkAmount))
+                                Label("Amount", systemImage: "arrowtriangle.down.fill").tag(SortDescriptor(\HistoricalTransaction.checkAmount, order: .reverse))
+                            }
+                            .pickerStyle(.inline)
+                            .foregroundStyle(.black)
                         }
-                        .pickerStyle(.inline)
-                        .foregroundStyle(.black)
                     }
                     if checkAmount != 0 {
                         Button("Done") {
