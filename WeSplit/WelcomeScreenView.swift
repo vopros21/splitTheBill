@@ -18,11 +18,13 @@ struct WelcomeScreenView: View {
                 .padding(.bottom)
             Group{
                 Text("1. Add tips")
+                Image(systemName: "arrow.down")
                 Text("2. Pay for all at once")
+                Image(systemName: "arrow.down")
                 Text("3. Get payment back later")
             }
-            .padding(.bottom)
-            .frame(minWidth: 200, alignment: .leading)
+            .padding(.bottom, 10)
+            .frame(minWidth: 200, alignment: .center)
             
             Spacer()
                 .frame(height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
